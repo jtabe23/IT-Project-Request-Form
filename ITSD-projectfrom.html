@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Project Request Form</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #0056b3;
+        }
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        input[type="text"], textarea {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
+        textarea {
+            resize: vertical;
+            height: 100px;
+        }
+        .grayed-out::placeholder {
+            color: #999999;
+        }
+        .radio-group {
+            display: flex;
+            gap: 10px;
+        }
+        button {
+            background-color: #ff6f00;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #e65c00;
+        }
+
+        /* Section Titles */
+        .section-heading {
+            margin-top: 20px;
+            font-size: 1.4em;
+            color: #0056b3;
+            font-weight: bold;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 5px;
+        }
+
+        /* Conditional Inputs */
+        .conditional-input {
+            display: none;
+            font-size: 0.9em; /* Sub-question smaller font */
+            color: #333;
+        }
+
+        /* Colors for Inputs */
+        input:focus, textarea:focus, select:focus {
+            border-color: #0056b3;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>IT Project Request</h1>
+
+    <!-- General Form Information Section -->
+    <div class="section-heading">GENERAL FORM INFORMATION</div>
+    
+    <form>
+        <label for="project-title">Project Title:</label>
+        <input type="text" id="project-title" name="project-title" maxlength="250" required>
+
+        <label for="requested-by">Requested By:</label>
+        <input type="text" id="requested-by" name="requested-by" class="grayed-out" placeholder="Enter full name" required>
+
+        <label for="division">Division:</label>
+        <select id="division" name="division" required>
+            <option value="" disabled selected>Select Division</option>
+            <option value="Division 1">Division 1</option>
+            <option value="Division 2">Division 2</option>
+            <option value="Division 3">Division 3</option>
+            <option value="Division 4">Division 4</option>
+            <option value="Division 5">Division 5</option>
+            <option value="Division 6">Division 6</option>
+            <option value="Division 7">Division 7</option>
+            <option value="Division 8">Division 8</option>
+            <option value="Division 9">Division 9</option>
+            <option value="Division 10">Division 10</option>
+            <option value="Division 11">Division 11</option>
+            <option value="Division 12">Division 12</option>
+            <option value="Division 13">Division 13</option>
+            <option value="Division 14">Division 14</option>
+            <option value="Division 15">Division 15</option>
+        </select>
+
+        <label for="requested-date">Requested Date:</label>
+        <input type="date" id="requested-date" name="requested-date" required>
+
+        <!-- Project Details Section -->
+        <div class="section-heading">PROJECT DETAILS</div>
+
+        <label for="business-problem">Business Problem to solve:</label>
+        <textarea id="business-problem" name="business-problem" class="grayed-out" placeholder="" required></textarea>
+
+        <label for="business-impact">Business Impact:</label>
+        <textarea id="business-impact" name="business-impact" class="grayed-out" placeholder=""></textarea>
+
+        <label for="customer-request">Customer Request - Describe how the customer would like to see the business problem solved. (ie. In-house application, vendor application, enhance a current application, etc.) This does not guarantee a solution.:</label>
+        <textarea id="customer-request" name="customer-request" class="grayed-out" placeholder="" required></textarea>
+
+        <label for="market-research">Has any market research been completed? If yes, what type of research?</label>
+        <textarea id="market-research" name="market-research" class="grayed-out" placeholder="(ie. Request for Information (RFI), vendor demonstrations, other state governments or agency solutions, end-user survey, etc.)" required></textarea>
+
+        <label>Mandate/Compliance - Is the request mandated by statute, legislative bill or regulation?</label>
+        <div class="radio-group">
+            <label><input type="radio" name="mandate-compliance" value="yes" required> Yes</label>
+            <label><input type="radio" name="mandate-compliance" value="no"> No</label>
+        </div>
+
+        <label for="completion-date">Completion Date – Is there a statutory or budgetary deadline for implementation?</label>
+        <div class="radio-group">
+            <label><input type="radio" name="time-constraints" value="yes" id="yes-deadline" required> Yes</label>
+            <label><input type="radio" name="time-constraints" value="no" id="no-deadline"> No</label>
+        </div>
+        <div id="deadline-date" class="conditional-input">
+            <label for="deadline">Select the date:</label>
+            <input type="date" id="deadline" name="deadline">
+        </div>
+
+        <label>Existing Application Impact – Is this request to enhance or interface with an existing application?</label>
+        <div class="radio-group">
+            <label><input type="radio" name="existing-app" value="yes" id="yes-existing" required> Yes</label>
+            <label><input type="radio" name="existing-app" value="no" id="no-existing"> No</label>
+        </div>
+        <div id="existing-app-name" class="conditional-input">
+            <label for="existing-app-name">Provide existing application name:</label>
+            <input type="text" id="existing-app-name" name="existing-app-name" class="grayed-out" placeholder="Provide existing application name">
+        </div>
+
+        <label>Will this request replace (Sunset) an existing application?</label>
+        <div class="radio-group">
+            <label><input type="radio" name="sunset-app" value="yes" id="yes-sunset" required> Yes</label>
+            <label><input type="radio" name="sunset-app" value="no" id="no-sunset"> No</label>
+        </div>
+        <div id="sunset-app-name" class="conditional-input">
+            <label for="sunset-app-name">Provide name of application to be retired:</label>
+            <input type="text" id="sunset-app-name" name="sunset-app-name" class="grayed-out" placeholder="Provide name of application to be retired">
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        // Show/hide conditional inputs based on user selection
+        const yesDeadline = document.getElementById('yes-deadline');
+        const noDeadline = document.getElementById('no-deadline');
+        const deadlineDate = document.getElementById('deadline-date');
+        
+        yesDeadline.addEventListener('change', function() {
+            deadlineDate.style.display = 'block';
+        });
+        
+        noDeadline.addEventListener('change', function() {
+            deadlineDate.style.display = 'none';
+        });
+
+        const yesExisting = document.getElementById('yes-existing');
+        const noExisting = document.getElementById('no-existing');
+        const existingAppName = document.getElementById('existing-app-name');
+        
+        yesExisting.addEventListener('change', function() {
+            existingAppName.style.display = 'block';
+        });
+        
+        noExisting.addEventListener('change', function() {
+            existingAppName.style.display = 'none';
+        });
+
+        const yesSunset = document.getElementById('yes-sunset');
+        const noSunset = document.getElementById('no-sunset');
+        const sunsetApp
